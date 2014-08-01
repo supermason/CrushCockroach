@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:49bccea16203f5e5b7bd4f4b3fb9a33d$ -->
+<TextureAtlas imagePath="gameSpritesheet.png">
+    <SubTexture name="aboutButton" x="170" y="768" width="170" height="216"/>
+    <SubTexture name="backButton" x="0" y="768" width="170" height="216"/>
+    <SubTexture name="bgInGame" x="0" y="0" width="1024" height="768"/>
+    <SubTexture name="startButton" x="340" y="768" width="182" height="158"/>
+</TextureAtlas>
