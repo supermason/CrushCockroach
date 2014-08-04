@@ -74,7 +74,7 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">NPOT</enum>
             <key>forceSquared</key>
             <false/>
             <key>forceWordAligned</key>
@@ -145,6 +145,13 @@
             <filename>../pieces/bgInGame.jpg</filename>
             <filename>../pieces/startButton.png</filename>
             <filename>../pieces/backButton.png</filename>
+            <filename>../pieces/subtitle.png</filename>
+            <filename>../pieces/title.png</filename>
+            <filename>../pieces/sounds_on_1.png</filename>
+            <filename>../pieces/sounds_on_2.png</filename>
+            <filename>../pieces/sounds_on_3.png</filename>
+            <filename>../pieces/sounds_off.png</filename>
+            <filename>../pieces/pauseButton.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

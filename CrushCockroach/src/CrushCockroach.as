@@ -1,9 +1,12 @@
 package
 {
+	import com.mason.crushcockroach.Game;
+	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
+	
 	import starling.core.Starling;
 	
 	/**
@@ -39,7 +42,10 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			
+			myStarling = new Starling(Game, stage);
+			myStarling.antiAliasing = 1;
+			myStarling.showStatsAt("left", "bottom");
+			myStarling.start();
 		}
 	}
 }

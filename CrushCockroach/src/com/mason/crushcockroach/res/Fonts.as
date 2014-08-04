@@ -42,8 +42,8 @@ package com.mason.crushcockroach.res
 		{
 			if (!Fonts[style])
 			{
-				var texture:Texture = Texture.fromBitmap(new Fonts["Font_" + style]());
-				var xml:XML = XML(new Fonts["XML_" + style]());
+				var texture:Texture = Texture.fromBitmap(new Fonts["Font_In_" + style]());
+				var xml:XML = XML(new Fonts["XML_In_" + style]());
 				Fonts[style] = new BitmapFont(texture, xml);
 				
 				TextField.registerBitmapFont(Fonts[style]);

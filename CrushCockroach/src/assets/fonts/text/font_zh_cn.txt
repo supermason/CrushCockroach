@@ -1,1 +1,1 @@
-﻿我的第一款手机游戏~ 基于Starling开发，希望大家喜欢
+﻿My first game based on Straling-Framework, hope everyone enjoys it~
