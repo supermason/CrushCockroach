@@ -77,7 +77,9 @@
     <!-- <softKeyboardBehavior></softKeyboardBehavior> -->
     <!-- Display Resolution for the app (either "standard" or "high"). Optional, OSX-only. Default "standard" -->
     <!-- <requestedDisplayResolution></requestedDisplayResolution> -->
-    <autoOrients>true</autoOrients>
+    <aspectRatio>landscape</aspectRatio>
+	<renderMode>direct</renderMode>
+    <autoOrients>false</autoOrients>
     <fullScreen>true</fullScreen>
     <visible>true</visible>
     <systemChrome>standard</systemChrome>
@@ -232,11 +234,14 @@
 </manifest>]]></manifestAdditions>
   </android>
   <iPhone>
-    <InfoAdditions><![CDATA[<key>UIDeviceFamily</key>
-<array>
-	<string>1</string>
-	<string>2</string>
-</array>]]></InfoAdditions>
+    <InfoAdditions><![CDATA[
+    	<key>UIDeviceFamily</key>
+    	<true/>
+		<array>
+			<string>1</string>
+			<string>2</string>
+		</array>]]>
+	</InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
   </iPhone>
 </application>

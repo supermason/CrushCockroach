@@ -1,19 +1,19 @@
 package com.mason.crushcockroach.screens 
 {
-	import com.mason.crushcockroach.ui.GameSprite;
 	import com.mason.crushcockroach.font.Font;
 	import com.mason.crushcockroach.res.Assets;
 	import com.mason.crushcockroach.res.Fonts;
 	import com.mason.crushcockroach.res.Sounds;
+	import com.mason.crushcockroach.ui.GameSprite;
+	
+	import starling.display.BlendMode;
+	import starling.display.Button;
 	import starling.display.DisplayObjectContainer;
+	import starling.display.Image;
 	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-	
-	import starling.display.BlendMode;
-	import starling.display.Button;
-	import starling.display.Image;
 	
 	/**
 	 * ...
@@ -34,6 +34,8 @@ package com.mason.crushcockroach.screens
 		private var _aboutFont:Font;
 		private var _txtAbout:TextField;
 		
+		private var _currentDate:Date;
+		
 		private var _screenMode:int = Welcome.IN_MAIN;
 		
 		public function Welcome() 
@@ -42,7 +44,7 @@ package com.mason.crushcockroach.screens
 		}
 		
 		// public ////
-		override public function show(parent:DisplayObjectContainer):void
+		override public function show(parent:DisplayObjectContainer=null):void
 		{
 			super.show(parent);
 			
@@ -52,6 +54,13 @@ package com.mason.crushcockroach.screens
 			Sounds.play("sndBgMain", 0, 999);
 		}
 		
+		override public function timeElapsed():void
+		{
+			_currentDate = new Date();
+			
+			_startBtn.rotation = Math.cos(_currentDate.getTime() * .002) * Math.PI / 360 * 10;
+		}
+		
 		// protected ////
 		override protected function drawScreen():void
 		{
@@ -59,15 +68,17 @@ package com.mason.crushcockroach.screens
 			_bg.blendMode = BlendMode.NONE;
 			
 			_title = new Image(Assets.getAtlas().getTexture("title"));
-			_title.x = 205;
-			_title.y = 255;
+			_title.x = 0;
+			_title.y = 0;
 			
 			_subTitle = new Image(Assets.getAtlas().getTexture("subtitle"));
-			_subTitle.x = 425;
-			_subTitle.y = 444;
+			_subTitle.x = 30;
+			_subTitle.y = 0;
 			
 			_startBtn = new Button(Assets.getAtlas().getTexture("startButton"));
-			_startBtn.x = 830;
+			_startBtn.pivotX = _startBtn.width / 2;
+//			_startBtn.pivotY = _startBtn.height / 2;
+			_startBtn.x = 830 + _startBtn.width * .5;
 			_startBtn.y = 523;
 			_aboutBtn = new Button(Assets.getAtlas().getTexture("aboutButton"));
 			_aboutBtn.x = 8;
@@ -78,9 +89,9 @@ package com.mason.crushcockroach.screens
 			
 			_aboutFont = Fonts.getFont("About");
 			
-			_txtAbout = new TextField(690, 175, "", _aboutFont.fontName, _aboutFont.fontSize);
+			_txtAbout = new TextField(690, 175, "", _aboutFont.fontName, _aboutFont.fontSize, 0xffffff);
 			_txtAbout.text = "My first game based on Straling-Framework, hope everyone enjoys it~";
-			_txtAbout.x = 200;
+			_txtAbout.x = 170;
 			_txtAbout.y = 270;
 			_txtAbout.hAlign = HAlign.CENTER;
 			_txtAbout.vAlign = VAlign.TOP;
@@ -100,6 +111,13 @@ package com.mason.crushcockroach.screens
 			_startBtn.addEventListener(Event.TRIGGERED, triggerHandler);
 			_aboutBtn.addEventListener(Event.TRIGGERED, triggerHandler);
 			_backBtn.addEventListener(Event.TRIGGERED, triggerHandler);
+		}
+		
+		override protected function removeEvt():void
+		{
+			_startBtn.removeEventListener(Event.TRIGGERED, triggerHandler);
+			_aboutBtn.removeEventListener(Event.TRIGGERED, triggerHandler);
+			_backBtn.removeEventListener(Event.TRIGGERED, triggerHandler);
 		}
 		
 		// event handler ////

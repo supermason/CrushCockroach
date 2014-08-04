@@ -14,19 +14,19 @@ package com.mason.crushcockroach.res
 		/**
 		 *  Regular font used for About.
 		 */	
-		[Embed(source="assets/fonts/fontInAbout.png")]
+		[Embed(source="/assets/fonts/fontInAbout.png")]
 		public static const Font_In_About:Class;
 		
-		[Embed(source="assets/fonts/fontInAbout.fnt", mimeType="application/octet-stream")]
+		[Embed(source="/assets/fonts/fontInAbout.fnt", mimeType="application/octet-stream")]
 		public static const XML_In_About:Class;
 		
 		/**
 		 * Font for score label and score value. 
 		 */	
-		[Embed(source="assets/fonts/fontInGame.png")]
+		[Embed(source="/assets/fonts/fontInGame.png")]
 		public static const Font_In_Game:Class;
 		
-		[Embed(source="assets/fonts/fontInGame.fnt", mimeType="application/octet-stream")]
+		[Embed(source="/assets/fonts/fontInGame.fnt", mimeType="application/octet-stream")]
 		public static const XML_In_Game:Class;
 		
 		/**

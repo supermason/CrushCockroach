@@ -1,7 +1,9 @@
 package com.mason.crushcockroach.ui {
 	import com.mason.crushcockroach.res.Assets;
 	import com.mason.crushcockroach.utils.AnimationHelper;
-	import starling.core.Starling;
+	
+	import flash.display.BitmapData;
+	
 	import starling.display.Button;
 	import starling.display.Image;
 	import starling.display.MovieClip;
@@ -23,9 +25,9 @@ package com.mason.crushcockroach.ui {
 		/** Image shown when the sound is muted. */
 		private var _muteState:Image;
 		
-		public function SoundButton(upState:Texture, text:String="", downState:Texture=null) 
+		public function SoundButton() 
 		{
-			super(upState, text, downState);
+			super(Texture.fromBitmapData(new BitmapData(Assets.getAtlas().getTexture("sounds_off").width, Assets.getAtlas().getTexture("sounds_off").height, true, 0x0)));
 			
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			

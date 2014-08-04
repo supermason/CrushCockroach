@@ -9,13 +9,13 @@ package com.mason.crushcockroach.res
 	 */
 	public class Assets 
 	{
-		[Embed(source="assets/graphics/gameSpritesheet.png")]
+		[Embed(source="/assets/graphics/gameSpritesheet.png")]
 		public static const GameAtlasTexture:Class;
 		
-		[Embed(source="assets/graphics/gameSpritesheet.xml", mimeType="application/octet-stream")]
+		[Embed(source="/assets/graphics/gameSpritesheet.xml", mimeType="application/octet-stream")]
 		public static const GameAtlasXML:Class;
 		
-		[Embed(source="assets/graphics/bgWelcome.jpg")]
+		[Embed(source="/assets/graphics/bgWelcome.jpg")]
 		public static const BgWelcome:Class;
 		
 		private static var _gameTextures:Dictionary = new Dictionary();

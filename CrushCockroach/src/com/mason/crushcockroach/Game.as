@@ -2,9 +2,11 @@ package com.mason.crushcockroach
 {
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.screens.InGame;
-	import com.mason.crushcockroach.ui.GameSprite;
 	import com.mason.crushcockroach.screens.Welcome;
+	import com.mason.crushcockroach.ui.GameSprite;
 	import com.mason.crushcockroach.ui.SoundButton;
+	
+	import starling.display.DisplayObjectContainer;
 	import starling.events.Event;
 	
 	/**
@@ -28,6 +30,16 @@ package com.mason.crushcockroach
 			
 		}
 		
+		// public ////
+		override public function show(parent:DisplayObjectContainer=null):void
+		{
+			super.show(null);
+			
+			_screenWelcome.show(this);
+			
+			addChild(_soundButton);
+		}
+		
 		// protected ////
 		override protected function drawScreen():void
 		{
@@ -38,11 +50,15 @@ package com.mason.crushcockroach
 			_soundButton = new SoundButton();
 			_soundButton.x = int(_soundButton.width * 0.5);
 			_soundButton.y = int(_soundButton.height * 0.5);
+			
+			show();
 		}
 		
 		override protected function addEvt():void
 		{
 			_soundButton.addEventListener(Event.TRIGGERED, soundButtonClickHandler);
+			
+			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 		}
 		
 		// event handler ////
@@ -63,6 +79,13 @@ package com.mason.crushcockroach
 				
 				_soundButton.soundButtonState = SoundButton.MUTE;
 			}
+		}
+		
+		
+		private function enterFrameHandler(event:Event):void
+		{
+			if (_screenInGame.active) _screenInGame.timeElapsed();
+			if (_screenWelcome.active)_screenWelcome.timeElapsed();
 		}
 		
 	}

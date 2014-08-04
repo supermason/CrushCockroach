@@ -33,9 +33,9 @@ package com.mason.crushcockroach.ui {
 		
 		// public ////
 		
-		public function show(parent:DisplayObjectContainer):void
+		public function show($parent:DisplayObjectContainer=null):void
 		{
-			if (parent) parent.addChild(this);
+			if ($parent) $parent.addChild(this);
 			
 			addEvt();
 			
@@ -49,6 +49,11 @@ package com.mason.crushcockroach.ui {
 			if (parent) parent.removeChild(this);
 			
 			removeEvt();
+		}
+		
+		public function timeElapsed():void
+		{
+			
 		}
 		
 		// protected ////

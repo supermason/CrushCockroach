@@ -10,7 +10,7 @@ package com.mason.crushcockroach.utils
 	 */
 	public class AnimationHelper 
 	{
-		private static var _juggler:Juggler = Starling.juggler;
+		private static var _juggler:Juggler;
 		
 		public function AnimationHelper() 
 		{
@@ -19,6 +19,8 @@ package com.mason.crushcockroach.utils
 		
 		public static function addToJuggler(animateObj:IAnimatable):void
 		{
+			checkJuggler();
+			
 			if (!_juggler.contains(animateObj))
 			{
 				_juggler.add(animateObj);
@@ -27,10 +29,18 @@ package com.mason.crushcockroach.utils
 		
 		public static function removeFromJuggler(animateObj:IAnimatable):void
 		{
+			checkJuggler();
+			
 			if (_juggler.contains(animateObj))
 			{
 				_juggler.remove(animateObj);
 			}
+		}
+		
+		// private ////
+		private static function checkJuggler():void
+		{
+			if (!_juggler) _juggler = Starling.juggler;
 		}
 	}
 

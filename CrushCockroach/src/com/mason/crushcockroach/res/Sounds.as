@@ -15,28 +15,28 @@ package com.mason.crushcockroach.res
 		/**
 		 * Embedded sound files. 
 		 */		
-		[Embed(source="assets/sounds/bgGame.mp3")]
+		[Embed(source="/assets/sounds/bgGame.mp3")]
 		public static const SND_BG_GAME:Class;
 		
-		[Embed(source="assets/sounds/bgWelcome.mp3")]
+		[Embed(source="/assets/sounds/bgWelcome.mp3")]
 		public static const SND_BG_MAIN:Class;
 		
-		[Embed(source="assets/sounds/eat.mp3")]
+		[Embed(source="/assets/sounds/eat.mp3")]
 		public static const SND_EAT:Class;
 		
-		[Embed(source="assets/sounds/coffee.mp3")]
+		[Embed(source="/assets/sounds/coffee.mp3")]
 		public static const SND_COFFEE:Class;
 		
-		[Embed(source="assets/sounds/mushroom.mp3")]
+		[Embed(source="/assets/sounds/mushroom.mp3")]
 		public static const SND_MUSHROOM:Class;
 		
-		[Embed(source="assets/sounds/hit.mp3")]
+		[Embed(source="/assets/sounds/hit.mp3")]
 		public static const SND_HIT:Class;
 		
-		[Embed(source="assets/sounds/hurt.mp3")]
+		[Embed(source="/assets/sounds/hurt.mp3")]
 		public static const SND_HURT:Class;
 		
-		[Embed(source="assets/sounds/lose.mp3")]
+		[Embed(source="/assets/sounds/lose.mp3")]
 		public static const SND_LOSE:Class;
 		
 		/**
