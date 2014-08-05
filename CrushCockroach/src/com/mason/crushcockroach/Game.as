@@ -1,5 +1,7 @@
 package com.mason.crushcockroach 
 {
+	import com.mason.crushcockroach.events.NavigationEvent;
+	import com.mason.crushcockroach.events.Operation;
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.screens.InGame;
 	import com.mason.crushcockroach.screens.Welcome;
@@ -31,9 +33,9 @@ package com.mason.crushcockroach
 		}
 		
 		// public ////
-		override public function show(parent:DisplayObjectContainer=null):void
+		override public function show(parent:DisplayObjectContainer=null, childIndex:int=-1):void
 		{
-			super.show(null);
+			super.show(null, childIndex);
 			
 			_screenWelcome.show(this);
 			
@@ -59,6 +61,7 @@ package com.mason.crushcockroach
 			_soundButton.addEventListener(Event.TRIGGERED, soundButtonClickHandler);
 			
 			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
+			addEventListener(NavigationEvent.CHANGE_SCREEN, onScreenChange);
 		}
 		
 		// event handler ////
@@ -81,6 +84,17 @@ package com.mason.crushcockroach
 			}
 		}
 		
+		private function onScreenChange(e:Event):void 
+		{
+			switch(e.data.operation)
+			{
+				case Operation.PLAY:
+					_screenWelcome.hide();
+					_screenInGame.show(this, this.numChildren);
+					addChild(_soundButton);
+					break;
+			}
+		}
 		
 		private function enterFrameHandler(event:Event):void
 		{

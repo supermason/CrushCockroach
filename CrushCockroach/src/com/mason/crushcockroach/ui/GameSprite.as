@@ -35,9 +35,19 @@ package com.mason.crushcockroach.ui {
 		
 		// public ////
 		
-		public function show($parent:DisplayObjectContainer=null):void
+		public function show($parent:DisplayObjectContainer=null, childIndex:int=-1):void
 		{
-			if ($parent) $parent.addChild(this);
+			if ($parent) 
+			{
+				if (childIndex != -1)
+				{
+					$parent.addChildAt(this, childIndex);
+				}
+				else
+				{
+					$parent.addChild(this);
+				}
+			}
 			
 			addEvt();
 			

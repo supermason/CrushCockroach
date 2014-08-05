@@ -1,16 +1,18 @@
 package com.mason.crushcockroach.screens 
 {
+	import com.mason.crushcockroach.events.NavigationEvent;
+	import com.mason.crushcockroach.events.Operation;
 	import com.mason.crushcockroach.font.Font;
 	import com.mason.crushcockroach.res.Assets;
 	import com.mason.crushcockroach.res.Fonts;
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.ui.GameSprite;
 	
-	import starling.display.MovieClip;
 	import starling.display.BlendMode;
 	import starling.display.Button;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.events.Event;
 	import starling.text.TextField;
 	import starling.utils.HAlign;
@@ -40,15 +42,17 @@ package com.mason.crushcockroach.screens
 		
 		private var _screenMode:int = Welcome.IN_MAIN;
 		
+		private var _startGameEvent:NavigationEvent;
+		
 		public function Welcome() 
 		{
 			super();
 		}
 		
 		// public ////
-		override public function show(parent:DisplayObjectContainer=null):void
+		override public function show(parent:DisplayObjectContainer=null, childIndex:int=-1):void
 		{
-			super.show(parent);
+			super.show(parent, childIndex);
 			
 			screenState = Welcome.IN_MAIN;
 			
@@ -136,6 +140,10 @@ package com.mason.crushcockroach.screens
 			if (event.target == _startBtn)
 			{
 				Sounds.play("sndCoffee");
+				
+				if (!_startGameEvent) _startGameEvent = new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, {"operation": Operation.PLAY});
+				
+				dispatchEvent(_startGameEvent);
 			}
 			else if (event.target == _aboutBtn)
 			{
