@@ -5,6 +5,7 @@ package com.mason.crushcockroach.screens
 	import com.mason.crushcockroach.res.Fonts;
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.ui.GameSprite;
+	import starling.display.MovieClip;
 	
 	import starling.display.BlendMode;
 	import starling.display.Button;
@@ -30,9 +31,10 @@ package com.mason.crushcockroach.screens
 		private var _startBtn:Button;
 		private var _aboutBtn:Button;
 		private var _backBtn:Button;
-		private var _cockroach:Image;
 		private var _aboutFont:Font;
 		private var _txtAbout:TextField;
+		
+		private var _cockroach:MovieClip;
 		
 		private var _currentDate:Date;
 		
@@ -97,6 +99,10 @@ package com.mason.crushcockroach.screens
 			_txtAbout.vAlign = VAlign.TOP;
 			_txtAbout.height = _txtAbout.textBounds.height + 20;
 			
+			_cockroach = new MovieClip(Assets.getAtlas().getTextures("cockroachInWelcome_"), 2);
+			_cockroach.x = 180;
+			_cockroach.y = 330;
+			
 			addChild(_bg);
 			addChild(_title);
 			addChild(_subTitle);
@@ -104,6 +110,7 @@ package com.mason.crushcockroach.screens
 			addChild(_startBtn);
 			addChild(_aboutBtn);
 			addChild(_backBtn);
+			addChild(_cockroach);
 		}
 		
 		override protected function addEvt():void

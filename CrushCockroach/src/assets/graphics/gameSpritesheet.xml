@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:6951464a999bf2085e8d65c807d66e89$ -->
+<!-- $TexturePacker:SmartUpdate:582bd3441f2c5d0e9b8d8a543e6d383d$ -->
 <TextureAtlas imagePath="gameSpritesheet.png">
-    <SubTexture name="aboutButton" x="170" y="768" width="170" height="216"/>
-    <SubTexture name="backButton" x="0" y="768" width="170" height="216"/>
+    <SubTexture name="aboutButton" x="1024" y="216" width="170" height="216"/>
+    <SubTexture name="backButton" x="1024" y="0" width="170" height="216"/>
     <SubTexture name="bgInGame" x="0" y="0" width="1024" height="768"/>
-    <SubTexture name="pauseButton" x="522" y="928" width="40" height="40"/>
-    <SubTexture name="sounds_off" x="522" y="888" width="40" height="40"/>
-    <SubTexture name="sounds_on_1" x="522" y="848" width="40" height="40"/>
-    <SubTexture name="sounds_on_2" x="962" y="808" width="40" height="40"/>
-    <SubTexture name="sounds_on_3" x="962" y="768" width="40" height="40"/>
-    <SubTexture name="startButton" x="340" y="848" width="182" height="158"/>
-    <SubTexture name="subtitle" x="522" y="968" width="362" height="30" frameX="-425" frameY="-443" frameWidth="1024" frameHeight="768"/>
-    <SubTexture name="title" x="340" y="768" width="622" height="80" frameX="-202" frameY="-253" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="cockroachInWelcome_1" x="183" y="768" width="183" height="208"/>
+    <SubTexture name="cockroachInWelcome_2" x="0" y="768" width="183" height="208"/>
+    <SubTexture name="pauseButton" x="526" y="926" width="40" height="40"/>
+    <SubTexture name="sounds_off" x="486" y="926" width="40" height="40"/>
+    <SubTexture name="sounds_on_1" x="446" y="926" width="40" height="40"/>
+    <SubTexture name="sounds_on_2" x="406" y="926" width="40" height="40"/>
+    <SubTexture name="sounds_on_3" x="366" y="926" width="40" height="40"/>
+    <SubTexture name="startButton" x="366" y="768" width="182" height="158"/>
+    <SubTexture name="subtitle" x="548" y="848" width="362" height="30" frameX="-425" frameY="-443" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="title" x="566" y="768" width="622" height="80" frameX="-202" frameY="-253" frameWidth="1024" frameHeight="768"/>
 </TextureAtlas>

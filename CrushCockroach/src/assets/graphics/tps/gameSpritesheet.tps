@@ -152,6 +152,8 @@
             <filename>../pieces/sounds_on_3.png</filename>
             <filename>../pieces/sounds_off.png</filename>
             <filename>../pieces/pauseButton.png</filename>
+            <filename>../pieces/cockroachInWelcome_1.png</filename>
+            <filename>../pieces/cockroachInWelcome_2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
