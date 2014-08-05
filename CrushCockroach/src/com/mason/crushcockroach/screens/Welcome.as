@@ -5,8 +5,8 @@ package com.mason.crushcockroach.screens
 	import com.mason.crushcockroach.res.Fonts;
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.ui.GameSprite;
-	import starling.display.MovieClip;
 	
+	import starling.display.MovieClip;
 	import starling.display.BlendMode;
 	import starling.display.Button;
 	import starling.display.DisplayObjectContainer;
