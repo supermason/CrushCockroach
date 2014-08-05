@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:582bd3441f2c5d0e9b8d8a543e6d383d$ -->
+<!-- $TexturePacker:SmartUpdate:acae6b2fdd8d7a000f7867c63cdb73ea$ -->
 <TextureAtlas imagePath="gameSpritesheet.png">
     <SubTexture name="aboutButton" x="1024" y="216" width="170" height="216"/>
     <SubTexture name="backButton" x="1024" y="0" width="170" height="216"/>

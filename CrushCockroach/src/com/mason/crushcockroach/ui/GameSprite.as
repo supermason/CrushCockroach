@@ -1,5 +1,6 @@
 package com.mason.crushcockroach.ui {
 	import com.mason.crushcockroach.utils.AnimationHelper;
+	
 	import starling.animation.IAnimatable;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Sprite;
@@ -12,6 +13,7 @@ package com.mason.crushcockroach.ui {
 	public class GameSprite extends Sprite 
 	{
 		protected var _active:Boolean;
+		protected var _animateObjList:Vector.<IAnimatable>;
 		
 		public function GameSprite() 
 		{
@@ -49,6 +51,8 @@ package com.mason.crushcockroach.ui {
 			if (parent) parent.removeChild(this);
 			
 			removeEvt();
+			
+			removeAllAnimateObjsFromJuggler();
 		}
 		
 		public function timeElapsed():void
@@ -60,6 +64,8 @@ package com.mason.crushcockroach.ui {
 		
 		protected function init():void
 		{
+			_animateObjList = new <IAnimatable>[];
+			
 			drawScreen();
 		}
 		
@@ -85,16 +91,35 @@ package com.mason.crushcockroach.ui {
 		
 		protected function addToJuggler(animateObj:IAnimatable):void
 		{
+			if (_animateObjList.indexOf(animateObj) == -1)
+				_animateObjList[_animateObjList.length] = animateObj;
+			
 			AnimationHelper.addToJuggler(animateObj);
 		}
 		
 		protected function removeFromJuggler(animateObj:IAnimatable):void
 		{
 			AnimationHelper.removeFromJuggler(animateObj);
+			
+			var index:int = _animateObjList.indexOf(animateObj);
+			if (index != -1)
+				_animateObjList.splice(index, 1);
 		}
 		
-		
 		// private ////
+		
+		private function removeAllAnimateObjsFromJuggler():void
+		{
+			if (_animateObjList.length > 0)
+			{
+				for each (var aniObj:IAnimatable in _animateObjList)
+				{
+					AnimationHelper.removeFromJuggler(aniObj);
+				}
+				
+				_animateObjList.length = 0;
+			}
+		}
 		
 		// getter && setter ////
 		/**Wheather this sprite is current screen to display*/

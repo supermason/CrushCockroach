@@ -54,6 +54,9 @@ package com.mason.crushcockroach.screens
 			
 			// play the backgournd music
 			Sounds.play("sndBgMain", 0, 999);
+			
+			// animate cockroack
+			addToJuggler(_cockroach);
 		}
 		
 		override public function timeElapsed():void
@@ -100,8 +103,8 @@ package com.mason.crushcockroach.screens
 			_txtAbout.height = _txtAbout.textBounds.height + 20;
 			
 			_cockroach = new MovieClip(Assets.getAtlas().getTextures("cockroachInWelcome_"), 2);
-			_cockroach.x = 180;
-			_cockroach.y = 330;
+			_cockroach.x = 190;
+			_cockroach.y = 340;
 			
 			addChild(_bg);
 			addChild(_title);
