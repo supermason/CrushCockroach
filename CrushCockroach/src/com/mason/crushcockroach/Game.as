@@ -5,7 +5,7 @@ package com.mason.crushcockroach
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.screens.InGame;
 	import com.mason.crushcockroach.screens.Welcome;
-	import com.mason.crushcockroach.ui.GameSprite;
+	import com.mason.crushcockroach.ui.GameWindow;
 	import com.mason.crushcockroach.ui.SoundButton;
 	
 	import starling.display.DisplayObjectContainer;
@@ -15,7 +15,7 @@ package com.mason.crushcockroach
 	 * ...
 	 * @author Mason
 	 */
-	public class Game extends GameSprite 
+	public class Game extends GameWindow 
 	{
 		/** Screen - Welcome or Main Menu. */
 		private var _screenWelcome:Welcome;

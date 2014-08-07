@@ -6,7 +6,7 @@ package com.mason.crushcockroach.screens
 	import com.mason.crushcockroach.res.Assets;
 	import com.mason.crushcockroach.res.Fonts;
 	import com.mason.crushcockroach.res.Sounds;
-	import com.mason.crushcockroach.ui.GameSprite;
+	import com.mason.crushcockroach.ui.GameWindow;
 	
 	import starling.display.BlendMode;
 	import starling.display.Button;
@@ -22,7 +22,7 @@ package com.mason.crushcockroach.screens
 	 * ...
 	 * @author Mason
 	 */
-	public class Welcome extends GameSprite
+	public class Welcome extends GameWindow
 	{
 		public static const IN_MAIN:int = 0;
 		public static const IN_ABOUT:int = 1;

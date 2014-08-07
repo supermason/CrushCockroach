@@ -12,7 +12,6 @@ package com.mason.crushcockroach.ui {
 	 */
 	public class GameSprite extends Sprite 
 	{
-		protected var _active:Boolean;
 		protected var _animateObjList:Vector.<IAnimatable>;
 		
 		public function GameSprite() 
@@ -33,43 +32,6 @@ package com.mason.crushcockroach.ui {
 			init();
 		}
 		
-		// public ////
-		
-		public function show($parent:DisplayObjectContainer=null, childIndex:int=-1):void
-		{
-			if ($parent) 
-			{
-				if (childIndex != -1)
-				{
-					$parent.addChildAt(this, childIndex);
-				}
-				else
-				{
-					$parent.addChild(this);
-				}
-			}
-			
-			addEvt();
-			
-			_active = true;
-		}
-		
-		public function hide():void
-		{
-			_active = false;
-			
-			if (parent) parent.removeChild(this);
-			
-			removeEvt();
-			
-			removeAllAnimateObjsFromJuggler();
-		}
-		
-		public function timeElapsed():void
-		{
-			
-		}
-		
 		// protected ////
 		
 		protected function init():void
@@ -84,20 +46,6 @@ package com.mason.crushcockroach.ui {
 			
 		}
 		
-		protected function addEvt():void
-		{
-			
-		}
-		
-		protected function removeEvt():void
-		{
-			
-		}
-		
-		protected function removeEvent(type:String, handler:Function):void
-		{
-			if (hasEventListener(type)) removeEventListener(type, handler);
-		}
 		
 		protected function addToJuggler(animateObj:IAnimatable):void
 		{
@@ -116,9 +64,7 @@ package com.mason.crushcockroach.ui {
 				_animateObjList.splice(index, 1);
 		}
 		
-		// private ////
-		
-		private function removeAllAnimateObjsFromJuggler():void
+		protected function removeAllAnimateObjsFromJuggler():void
 		{
 			if (_animateObjList.length > 0)
 			{
@@ -131,12 +77,7 @@ package com.mason.crushcockroach.ui {
 			}
 		}
 		
-		// getter && setter ////
-		/**Wheather this sprite is current screen to display*/
-		public function get active():Boolean 
-		{
-			return _active;
-		}
+		
 	}
 
 }

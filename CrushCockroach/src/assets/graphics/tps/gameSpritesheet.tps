@@ -155,6 +155,12 @@
             <filename>../pieces/cockroachInWelcome_1.png</filename>
             <filename>../pieces/cockroachInWelcome_2.png</filename>
             <filename>../pieces/playButton.png</filename>
+            <filename>C:/Users/Administrator/Desktop/images/naruto_run_01.png</filename>
+            <filename>C:/Users/Administrator/Desktop/images/naruto_run_02.png</filename>
+            <filename>C:/Users/Administrator/Desktop/images/naruto_run_03.png</filename>
+            <filename>C:/Users/Administrator/Desktop/images/naruto_run_04.png</filename>
+            <filename>C:/Users/Administrator/Desktop/images/naruto_run_05.png</filename>
+            <filename>C:/Users/Administrator/Desktop/images/naruto_run_06.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
