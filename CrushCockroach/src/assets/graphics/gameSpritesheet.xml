@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:acae6b2fdd8d7a000f7867c63cdb73ea$ -->
+<!-- $TexturePacker:SmartUpdate:748cab5911e2aecc0be26705f2dad07b$ -->
 <TextureAtlas imagePath="gameSpritesheet.png">
     <SubTexture name="aboutButton" x="1024" y="216" width="170" height="216"/>
     <SubTexture name="backButton" x="1024" y="0" width="170" height="216"/>
@@ -8,11 +8,12 @@
     <SubTexture name="cockroachInWelcome_1" x="183" y="768" width="183" height="208"/>
     <SubTexture name="cockroachInWelcome_2" x="0" y="768" width="183" height="208"/>
     <SubTexture name="pauseButton" x="526" y="926" width="40" height="40"/>
+    <SubTexture name="playButton" x="366" y="768" width="182" height="158"/>
     <SubTexture name="sounds_off" x="486" y="926" width="40" height="40"/>
     <SubTexture name="sounds_on_1" x="446" y="926" width="40" height="40"/>
     <SubTexture name="sounds_on_2" x="406" y="926" width="40" height="40"/>
     <SubTexture name="sounds_on_3" x="366" y="926" width="40" height="40"/>
-    <SubTexture name="startButton" x="366" y="768" width="182" height="158"/>
+    <SubTexture name="startButton" x="1024" y="432" width="169" height="128"/>
     <SubTexture name="subtitle" x="548" y="848" width="362" height="30" frameX="-425" frameY="-443" frameWidth="1024" frameHeight="768"/>
     <SubTexture name="title" x="566" y="768" width="622" height="80" frameX="-202" frameY="-253" frameWidth="1024" frameHeight="768"/>
 </TextureAtlas>

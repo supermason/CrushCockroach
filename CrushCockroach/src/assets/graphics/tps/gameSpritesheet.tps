@@ -154,6 +154,7 @@
             <filename>../pieces/pauseButton.png</filename>
             <filename>../pieces/cockroachInWelcome_1.png</filename>
             <filename>../pieces/cockroachInWelcome_2.png</filename>
+            <filename>../pieces/playButton.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

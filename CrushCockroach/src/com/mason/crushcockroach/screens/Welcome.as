@@ -30,7 +30,7 @@ package com.mason.crushcockroach.screens
 		private var _bg:Image;
 		private var _title:Image;
 		private var _subTitle:Image;
-		private var _startBtn:Button;
+		private var _playBtn:Button;
 		private var _aboutBtn:Button;
 		private var _backBtn:Button;
 		private var _aboutFont:Font;
@@ -67,7 +67,7 @@ package com.mason.crushcockroach.screens
 		{
 			_currentDate = new Date();
 			
-			_startBtn.rotation = Math.cos(_currentDate.getTime() * .002) * Math.PI / 360 * 10;
+			_playBtn.rotation = Math.cos(_currentDate.getTime() * .002) * Math.PI / 360 * 10;
 		}
 		
 		// protected ////
@@ -84,11 +84,11 @@ package com.mason.crushcockroach.screens
 			_subTitle.x = 30;
 			_subTitle.y = 0;
 			
-			_startBtn = new Button(Assets.getAtlas().getTexture("startButton"));
-			_startBtn.pivotX = _startBtn.width / 2;
-//			_startBtn.pivotY = _startBtn.height / 2;
-			_startBtn.x = 830 + _startBtn.width * .5;
-			_startBtn.y = 523;
+			_playBtn = new Button(Assets.getAtlas().getTexture("playButton"));
+			_playBtn.pivotX = _playBtn.width / 2;
+//			_playBtn.pivotY = _playBtn.height / 2;
+			_playBtn.x = 830 + _playBtn.width * .5;
+			_playBtn.y = 523;
 			_aboutBtn = new Button(Assets.getAtlas().getTexture("aboutButton"));
 			_aboutBtn.x = 8;
 			_aboutBtn.y = 557;
@@ -114,7 +114,7 @@ package com.mason.crushcockroach.screens
 			addChild(_title);
 			addChild(_subTitle);
 			addChild(_txtAbout);
-			addChild(_startBtn);
+			addChild(_playBtn);
 			addChild(_aboutBtn);
 			addChild(_backBtn);
 			addChild(_cockroach);
@@ -122,14 +122,14 @@ package com.mason.crushcockroach.screens
 		
 		override protected function addEvt():void
 		{
-			_startBtn.addEventListener(Event.TRIGGERED, triggerHandler);
+			_playBtn.addEventListener(Event.TRIGGERED, triggerHandler);
 			_aboutBtn.addEventListener(Event.TRIGGERED, triggerHandler);
 			_backBtn.addEventListener(Event.TRIGGERED, triggerHandler);
 		}
 		
 		override protected function removeEvt():void
 		{
-			_startBtn.removeEventListener(Event.TRIGGERED, triggerHandler);
+			_playBtn.removeEventListener(Event.TRIGGERED, triggerHandler);
 			_aboutBtn.removeEventListener(Event.TRIGGERED, triggerHandler);
 			_backBtn.removeEventListener(Event.TRIGGERED, triggerHandler);
 		}
@@ -137,7 +137,7 @@ package com.mason.crushcockroach.screens
 		// event handler ////
 		protected function triggerHandler(event:Event):void
 		{
-			if (event.target == _startBtn)
+			if (event.target == _playBtn)
 			{
 				Sounds.play("sndCoffee");
 				
@@ -166,7 +166,7 @@ package com.mason.crushcockroach.screens
 			
 			var inMain:Boolean = _screenMode == Welcome.IN_MAIN;
 			
-			_startBtn.visible = inMain;
+			_playBtn.visible = inMain;
 			_aboutBtn.visible = inMain;
 			_backBtn.visible = !inMain;
 			
