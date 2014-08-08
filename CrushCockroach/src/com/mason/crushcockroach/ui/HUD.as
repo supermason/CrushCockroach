@@ -38,7 +38,7 @@ package com.mason.crushcockroach.ui
 			// Get font for 
 			_font = Fonts.getFont("Game");
 			
-			_txtLivesLbl = new TextField(150, 20, "lives", _font.fontName, _font.fontSize, 0xffffff);
+			_txtLivesLbl = new TextField(150, 40, "lives", _font.fontName, _font.fontSize, 0xffffff);
 			_txtLivesLbl.hAlign = HAlign.LEFT;
 			_txtLivesLbl.vAlign = VAlign.TOP;
 			_txtLivesLbl.x = 150;
@@ -51,7 +51,7 @@ package com.mason.crushcockroach.ui
 			_txtLives.x = int(_txtLivesLbl.x + _txtLivesLbl.width - _txtLives.width);
 			_txtLives.y = _txtLivesLbl.y + _txtLivesLbl.height;
 			
-			_txtKillCountLbl = new TextField(150, 20, "kill", _font.fontName, _font.fontSize, 0xffffff);
+			_txtKillCountLbl = new TextField(150, 40, "kill", _font.fontName, _font.fontSize, 0xffffff);
 			_txtKillCountLbl.hAlign = HAlign.LEFT;
 			_txtKillCountLbl.vAlign = VAlign.TOP;
 			_txtKillCountLbl.x = (stage.stageWidth - _txtKillCountLbl.width) * .5;
@@ -64,7 +64,7 @@ package com.mason.crushcockroach.ui
 			_txtKillCount.x = int(_txtKillCountLbl.x + _txtKillCountLbl.width - _txtKillCount.width);
 			_txtKillCount.y = _txtKillCountLbl.y + _txtKillCountLbl.height;
 			
-			_txtDurationLbl = new TextField(150, 20, "duration", _font.fontName, _font.fontSize, 0xffffff);
+			_txtDurationLbl = new TextField(150, 40, "duration", _font.fontName, _font.fontSize, 0xffffff);
 			_txtDurationLbl.hAlign = HAlign.LEFT;
 			_txtDurationLbl.vAlign = VAlign.TOP;
 			_txtDurationLbl.x = int(stage.stageWidth - _txtDurationLbl.width - 100);
