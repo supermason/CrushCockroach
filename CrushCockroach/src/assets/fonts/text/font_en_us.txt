@@ -1,1 +1,1 @@
-﻿lives score 0123456789
+﻿lives score 0123456789 kill duration :

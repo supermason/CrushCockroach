@@ -16,7 +16,17 @@ package com.mason.crushcockroach
 		
 		// Cockroack properties ------------------------------------
 		
-		public static const COCKROACH_BASE_SPEED:Number = 10;
+		public static const MIN_COCKROACH_IN_SCREEN:int = 30;
+		public static const MAX_COCKROACH_IN_SCREEN:int = 200;
+		public static const AVERAGE_GENERATION_COUNT:int = 10;
+		public static const GENERATE_FREQUENCY:int = 2;
+		public static const COCKROACH_BASE_SPEED:Number = 100;
+		
+		// cockroachs' state ---------------------------------------
+		
+		public static const COCKROACH_ALIVE:int = 1;
+		public static const COCKROACH_DEAD:int = 2;
+		public static const COCKROACH_REFREEZING:int = 3;
 	}
 
 }

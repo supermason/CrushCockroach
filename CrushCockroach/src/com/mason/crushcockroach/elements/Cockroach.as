@@ -1,5 +1,6 @@
 package com.mason.crushcockroach.elements 
 {
+	import com.mason.crushcockroach.GameConstants;
 	import com.mason.crushcockroach.res.Assets;
 	import com.mason.crushcockroach.ui.GameSprite;
 	import starling.display.MovieClip;
@@ -12,6 +13,7 @@ package com.mason.crushcockroach.elements
 	{
 		private var _cockroachArt:MovieClip
 		private var _speed:Number;
+		private var _state:int;
 		
 		public function Cockroach() 
 		{
@@ -19,16 +21,31 @@ package com.mason.crushcockroach.elements
 			
 		}
 		
+		// public ////
+		public function dead():void
+		{
+			if (parent) parent.removeChild(this);
+			
+			removeFromJuggler(_cockroachArt);
+			
+			_cockroachArt.dispose();
+		}
+		
 		// protected ////
 		override protected function drawScreen():void
 		{
-			_cockroachArt = new MovieClip(Assets.getAtlas().getTextures("naruto_run_0"), 6);
-			_cockroachArt.x = Math.ceil(-_cockroachArt.width * .5);
-			_cockroachArt.y = Math.ceil(-_cockroachArt.height * .5);
+			_cockroachArt = new MovieClip(Assets.getAtlas().getTextures("naruto_run_"), 6);
+//			_cockroachArt.x = Math.ceil(-_cockroachArt.width * .5);
+//			_cockroachArt.y = Math.ceil(-_cockroachArt.height * .5);
 			
 			addToJuggler(_cockroachArt);
 			
 			addChild(_cockroachArt);
+			
+			x = -_cockroachArt.width;
+			y = (stage.stageHeight - _cockroachArt.texture.height - 50) * Math.random();
+			
+			_state = GameConstants.COCKROACH_ALIVE;
 		}
 		
 		// private ////
@@ -61,6 +78,16 @@ package com.mason.crushcockroach.elements
 		public function set speed(value:Number):void 
 		{
 			_speed = value;
+		}
+		
+		public function get state():int 
+		{
+			return _state;
+		}
+		
+		public function set state(value:int):void 
+		{
+			_state = value;
 		}
 	}
 

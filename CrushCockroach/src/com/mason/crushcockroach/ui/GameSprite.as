@@ -1,5 +1,6 @@
 package com.mason.crushcockroach.ui {
 	import com.mason.crushcockroach.utils.AnimationHelper;
+	import starling.display.MovieClip;
 	
 	import starling.animation.IAnimatable;
 	import starling.display.DisplayObjectContainer;
@@ -58,6 +59,8 @@ package com.mason.crushcockroach.ui {
 		protected function removeFromJuggler(animateObj:IAnimatable):void
 		{
 			AnimationHelper.removeFromJuggler(animateObj);
+			
+			if (animateObj is MovieClip) MovieClip(animateObj).stop();
 			
 			var index:int = _animateObjList.indexOf(animateObj);
 			if (index != -1)
