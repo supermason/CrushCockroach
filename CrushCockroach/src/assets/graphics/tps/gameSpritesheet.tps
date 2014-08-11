@@ -84,7 +84,7 @@
             <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
-        <false/>
+        <true/>
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
@@ -199,6 +199,8 @@
             <filename>../pieces/naruto_run/naruto_run_04.png</filename>
             <filename>../pieces/naruto_run/naruto_run_05.png</filename>
             <filename>../pieces/naruto_run/naruto_run_06.png</filename>
+            <filename>../pieces/mainButton.png</filename>
+            <filename>../pieces/playAgainButton.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
