@@ -1,12 +1,20 @@
 package com.mason.crushcockroach.screens 
 {
+	import com.mason.crushcockroach.events.NavigationEvent;
+	import com.mason.crushcockroach.events.Operation;
 	import com.mason.crushcockroach.GameConstants;
 	import com.mason.crushcockroach.elements.Cockroach;
 	import com.mason.crushcockroach.elements.GameBackground;
 	import com.mason.crushcockroach.res.Assets;
 	import com.mason.crushcockroach.res.Sounds;
+	import com.mason.crushcockroach.screens.GameOver;
 	import com.mason.crushcockroach.ui.GameWindow;
 	import com.mason.crushcockroach.ui.HUD;
+	import flash.geom.Point;
+	import starling.animation.Tween;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
 	
 	import flash.utils.getTimer;
 	
@@ -32,11 +40,13 @@ package com.mason.crushcockroach.screens
 		private var _timePrevious:Number = 0;
 		private var _timeCurrent:Number = 0;
 		private var _elapsed:Number = 0;
-		private var _speedControl:Number = 0;
 		
 		private var _cockroaches:Vector.<Cockroach>;
 		private var _cockroachInScreen:int;
 		private var _generateKeyPoint:Number = 0;
+		
+		private var _touch:Touch;
+		private var _pos:Point = new Point();
 		
 		public function InGame() 
 		{
@@ -50,6 +60,31 @@ package com.mason.crushcockroach.screens
 		{
 			super.show($parent, childIndex);
 			
+		}
+		
+		override public function timeElapsed():void
+		{
+			if (_gameState == GameConstants.GAME_STATE_PLAYING) enterFrameHandler();
+		}
+		
+		override public function hide():void
+		{
+			super.hide();
+			
+			_hud.reset();
+			
+			_timePrevious = _timeCurrent = _elapsed = _generateKeyPoint = 0;
+			
+			for each (var cockroach:Cockroach in _cockroaches)
+			{
+				cockroach.dead();
+				cockroach = null;
+			}
+			
+			_cockroaches.length = 0;
+			
+			_cockroachInScreen = 0;
+
 		}
 		
 		// protected ////
@@ -83,6 +118,12 @@ package com.mason.crushcockroach.screens
 			_pauseButton.addEventListener(Event.TRIGGERED, triggerEvtHandler);
 		}
 		
+		override protected function removeEvt():void
+		{
+			_startButton.removeEventListener(Event.TRIGGERED, triggerEvtHandler);
+			_pauseButton.removeEventListener(Event.TRIGGERED, triggerEvtHandler);
+		}
+		
 		// event handler ////
 		private function triggerEvtHandler(event:Event):void 
 		{
@@ -103,18 +144,39 @@ package com.mason.crushcockroach.screens
 			}
 		}
 		
-		private function enterFrameHandler(event:Event):void
+		private function enterFrameHandler(event:Event=null):void
 		{
 			calculateElapsed();
 			
 			onGameTick();
 		}
 		
+		private function touchHandler(event:TouchEvent):void
+		{
+			_touch = event.getTouch(stage);
+			
+			if (_touch)
+			{
+				_touch.getLocation(stage, _pos);
+				
+				if (_touch.phase == TouchPhase.ENDED)
+				{
+					for each (var cockroach:Cockroach in _cockroaches)
+					{
+						if ((_pos.x >= cockroach.x && _pos.x <= cockroach.x + cockroach.width) && (_pos.y >= cockroach.y && _pos.y <= cockroach.y + cockroach.height))
+						{
+							cockroachKilled(cockroach);
+						}
+					}
+				}
+			}
+		}
+		
 		// private ////
 		
 		private function startGame():void 
 		{
-			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
+			stage.addEventListener(TouchEvent.TOUCH, touchHandler);
 		}
 		
 		private function onGameTick():void
@@ -127,12 +189,18 @@ package com.mason.crushcockroach.screens
 						
 						break;
 					case GameConstants.GAME_STATE_PLAYING:
+						recordTime();
 						addCockroach();
 						moveCockroach();
 						removeDeadCockroach();
 						break;
 				}
 			}
+		}
+		
+		private function recordTime():void
+		{
+			_hud.duration += _elapsed * 100;
 		}
 		
 		private function addCockroach():void
@@ -155,6 +223,8 @@ package com.mason.crushcockroach.screens
 					for (var i:int = 0; i < countNeedToGenerate; ++i)
 					{
 						cockroach = new Cockroach();
+						//cockroach.pivotX = -cockroach.width * .5;
+						//cockroach.pivotY = -cockroach.height * .5;
 						cockroach.speed = GameConstants.COCKROACH_BASE_SPEED * Math.random();
 						
 						addChild(cockroach);
@@ -162,7 +232,6 @@ package com.mason.crushcockroach.screens
 						_cockroaches[_cockroaches.length] = cockroach;
 						
 						_cockroachInScreen++;
-						
 					}
 				}
 			}
@@ -184,14 +253,33 @@ package com.mason.crushcockroach.screens
 					
 					if (cockroach.x - cockroach.width > stage.stageWidth)
 					{
-						cockroach.state = GameConstants.COCKROACH_DEAD;
-						cockroach.dead();
-						cockroach = null;
+						_hud.lives--;
 						
-						_cockroachInScreen--;
+						cockroachDie(cockroach);
+						
+						if (_hud.lives <= 0)
+						{
+							gameOver();
+						}
 					}
 				}
 			}
+		}
+		
+		private function cockroachKilled(cockroach:Cockroach):void
+		{
+			_hud.killCount++;
+			
+			cockroachDie(cockroach);
+		}
+		
+		private function cockroachDie(cockroach:Cockroach):void 
+		{
+			cockroach.state = GameConstants.COCKROACH_DEAD;
+			cockroach.dead();
+			cockroach = null;
+						
+			_cockroachInScreen--;
 		}
 		
 		private function removeDeadCockroach():void 
@@ -227,6 +315,18 @@ package com.mason.crushcockroach.screens
 			}
 		}
 		
+		private function gameOver():void
+		{
+			stage.removeEventListener(TouchEvent.TOUCH, touchHandler);
+			
+			_gamePaused = true;
+			
+			dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, { 
+				operation: Operation.GAME_OVER, 
+				score: _hud.killCount,
+				duration: _hud.durationStr
+			} ));
+		}
 		
 		private function calculateElapsed():void
 		{

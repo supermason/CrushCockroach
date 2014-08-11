@@ -45,6 +45,8 @@ package com.mason.crushcockroach.elements
 			x = -_cockroachArt.width;
 			y = (stage.stageHeight - _cockroachArt.texture.height - 50) * Math.random();
 			
+			if (y <= 80) y = 80;
+			
 			_state = GameConstants.COCKROACH_ALIVE;
 		}
 		

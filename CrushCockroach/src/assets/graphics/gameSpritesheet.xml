@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:5480da5a8903ad7855bb9f67306571d1$ -->
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:31192453828dfe2afec648072a51447c:86099ca690f574cfbe97481f26145f82:2ac6582fc90a89688c4692188a4467a6$ -->
 <TextureAtlas imagePath="gameSpritesheet.png">
-    <SubTexture name="aboutButton" x="1024" y="216" width="170" height="216"/>
-    <SubTexture name="backButton" x="1024" y="0" width="170" height="216"/>
+    <SubTexture name="aboutButton" x="1024" y="0" width="170" height="216"/>
+    <SubTexture name="backButton" x="1024" y="216" width="170" height="216"/>
     <SubTexture name="bgInGame" x="0" y="0" width="1024" height="768"/>
-    <SubTexture name="cockroachInWelcome_1" x="183" y="768" width="183" height="208"/>
-    <SubTexture name="cockroachInWelcome_2" x="0" y="768" width="183" height="208"/>
-    <SubTexture name="naruto_run_01" x="442" y="926" width="74" height="46" frameX="-13" frameY="-15" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_02" x="366" y="926" width="76" height="48" frameX="-11" frameY="-13" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_03" x="608" y="848" width="80" height="52" frameX="-7" frameY="-14" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_04" x="548" y="848" width="60" height="64" frameX="-26" frameY="-2" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_05" x="556" y="912" width="50" height="60" frameX="-34" frameY="-6" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_06" x="606" y="912" width="56" height="58" frameX="-31" frameY="-8" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="pauseButton" x="728" y="848" width="40" height="40"/>
-    <SubTexture name="playButton" x="366" y="768" width="182" height="158"/>
-    <SubTexture name="sounds_off" x="702" y="888" width="40" height="40"/>
-    <SubTexture name="sounds_on_1" x="688" y="848" width="40" height="40"/>
-    <SubTexture name="sounds_on_2" x="662" y="900" width="40" height="40"/>
-    <SubTexture name="sounds_on_3" x="516" y="926" width="40" height="40"/>
-    <SubTexture name="startButton" x="1024" y="432" width="169" height="128"/>
-    <SubTexture name="subtitle" x="662" y="940" width="362" height="30" frameX="-425" frameY="-443" frameWidth="1024" frameHeight="768"/>
-    <SubTexture name="title" x="556" y="768" width="622" height="80" frameX="-202" frameY="-253" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="cockroachInWelcome_1" x="622" y="768" width="183" height="208"/>
+    <SubTexture name="cockroachInWelcome_2" x="805" y="768" width="183" height="208"/>
+    <SubTexture name="mainButton" x="1024" y="432" width="170" height="216"/>
+    <SubTexture name="naruto_run_01" x="491" y="848" width="74" height="46" frameX="-13" frameY="-15" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_02" x="457" y="900" width="76" height="48" frameX="-11" frameY="-13" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_03" x="411" y="848" width="80" height="52" frameX="-7" frameY="-14" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_04" x="351" y="848" width="60" height="64" frameX="-26" frameY="-2" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_05" x="351" y="912" width="50" height="60" frameX="-34" frameY="-6" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_06" x="401" y="912" width="56" height="58" frameX="-31" frameY="-8" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="pauseButton" x="565" y="848" width="40" height="40"/>
+    <SubTexture name="playAgainButton" x="1024" y="648" width="170" height="216"/>
+    <SubTexture name="playButton" x="169" y="848" width="182" height="158"/>
+    <SubTexture name="sounds_off" x="565" y="888" width="40" height="40"/>
+    <SubTexture name="sounds_on_1" x="533" y="928" width="40" height="40"/>
+    <SubTexture name="sounds_on_2" x="573" y="928" width="40" height="40"/>
+    <SubTexture name="sounds_on_3" x="988" y="864" width="40" height="40"/>
+    <SubTexture name="startButton" x="0" y="864" width="169" height="128"/>
+    <SubTexture name="subtitle" x="351" y="976" width="362" height="30" frameX="-425" frameY="-443" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="title" x="0" y="768" width="622" height="80" frameX="-202" frameY="-253" frameWidth="1024" frameHeight="768"/>
 </TextureAtlas>

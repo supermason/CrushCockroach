@@ -18,6 +18,9 @@ package com.mason.crushcockroach.res
 		[Embed(source="/assets/graphics/bgWelcome.jpg")]
 		public static const BgWelcome:Class;
 		
+		[Embed(source="/assets/graphics/gameOverBg.png")]
+		public static const BgGameOver:Class;
+		
 		private static var _gameTextures:Dictionary = new Dictionary();
 		private static var _gameAtlasTexture:TextureAtlas;
 		

@@ -7,11 +7,15 @@ package com.mason.crushcockroach
 	public class GameConstants 
 	{
 		
-		// Player's states - what is the player doing? -------------
+		// Game's states - what is the player doing? -------------
 		
 		public static const GAME_STATE_IDLE:int = 0;
 		public static const GAME_STATE_PLAYING:int = 1;
 		public static const GAME_STATE_OVER:int = 2;
+		
+		// Player's attributes - how is the player going? -------------
+		
+		public static const FULL_HP:int = 100;
 		
 		
 		// Cockroack properties ------------------------------------

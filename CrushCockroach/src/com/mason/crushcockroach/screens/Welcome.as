@@ -70,6 +70,13 @@ package com.mason.crushcockroach.screens
 			_playBtn.rotation = Math.cos(_currentDate.getTime() * .002) * Math.PI / 360 * 10;
 		}
 		
+		public function jumpToAbout():void
+		{
+			Sounds.play("sndMushroom");
+				
+			screenState = Welcome.IN_ABOUT;
+		}
+		
 		// protected ////
 		override protected function drawScreen():void
 		{

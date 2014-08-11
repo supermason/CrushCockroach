@@ -1,6 +1,7 @@
 package com.mason.crushcockroach.ui 
 {
 	import com.mason.crushcockroach.font.Font;
+	import com.mason.crushcockroach.GameConstants;
 	import com.mason.crushcockroach.res.Fonts;
 	import com.mason.crushcockroach.utils.StringUtil;
 	import starling.text.TextField;
@@ -33,6 +34,16 @@ package com.mason.crushcockroach.ui
 			
 		}
 		
+		// public ////
+		
+		public function reset():void
+		{
+			_txtKillCount.text = "0";
+			_txtLives.text = GameConstants.FULL_HP.toString();
+			_txtDuration.text = "00:00:00";
+		}
+		
+		// protected ////
 		override protected function drawScreen():void 
 		{
 			// Get font for 
@@ -44,7 +55,7 @@ package com.mason.crushcockroach.ui
 			_txtLivesLbl.x = 150;
 			_txtLivesLbl.y = 5;
 			
-			_txtLives = new TextField(150, 75, "5", _font.fontName, _font.fontSize, 0xffffff);
+			_txtLives = new TextField(150, 75, GameConstants.FULL_HP.toString(), _font.fontName, _font.fontSize, 0xffffff);
 			_txtLives.hAlign = HAlign.LEFT;
 			_txtLives.vAlign = VAlign.TOP;
 			_txtLives.width = _txtLivesLbl.width;
@@ -70,7 +81,7 @@ package com.mason.crushcockroach.ui
 			_txtDurationLbl.x = int(stage.stageWidth - _txtDurationLbl.width - 100);
 			_txtDurationLbl.y = 5;
 			
-			_txtDuration = new TextField(150, 75, "00:00", _font.fontName, _font.fontSize, 0xffffff);
+			_txtDuration = new TextField(150, 75, "00:00:00", _font.fontName, _font.fontSize, 0xffffff);
 			_txtDuration.hAlign = HAlign.LEFT;
 			_txtDuration.vAlign = VAlign.TOP;
 			_txtDuration.width = _txtDurationLbl.width;
@@ -83,6 +94,8 @@ package com.mason.crushcockroach.ui
 			addChild(_txtKillCount);
 			addChild(_txtDurationLbl);
 			addChild(_txtDuration);
+			
+			_lives = GameConstants.FULL_HP;
 		}
 		
 		// getter && setter ////
@@ -113,6 +126,11 @@ package com.mason.crushcockroach.ui
 		public function get duration():int 
 		{
 			return _duration;
+		}
+		
+		public function get durationStr():String
+		{
+			return _txtDuration.text;
 		}
 		
 		public function set duration(value:int):void 
