@@ -212,18 +212,18 @@
             <filename>../pieces/hammer/hammer_2.png</filename>
             <filename>../pieces/hammer/hammer_3.png</filename>
             <filename>../pieces/hammer/hammer_9.png</filename>
-            <filename>../pieces/chars/B.png</filename>
             <filename>../pieces/chars/E.png</filename>
             <filename>../pieces/chars/F.png</filename>
             <filename>../pieces/hammer/hammer_10.png</filename>
+            <filename>../pieces/chars/H.png</filename>
+            <filename>../pieces/chars/I.png</filename>
+            <filename>../pieces/chars/J.png</filename>
             <filename>../pieces/hammer/hammer_11.png</filename>
             <filename>../pieces/hammer/hammer_12.png</filename>
             <filename>../pieces/hammer/hammer_13.png</filename>
             <filename>../pieces/hammer/hammer_14.png</filename>
             <filename>../pieces/hammer/hammer_15.png</filename>
-            <filename>../pieces/chars/H.png</filename>
-            <filename>../pieces/chars/I.png</filename>
-            <filename>../pieces/chars/J.png</filename>
+            <filename>../pieces/chars/B.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
