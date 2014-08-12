@@ -9,6 +9,7 @@ package com.mason.crushcockroach.screens
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.ui.GameWindow;
 	import com.mason.crushcockroach.ui.HUD;
+	import starling.core.Starling;
 	
 	import flash.display.Sprite;
 	import flash.geom.Point;
@@ -27,6 +28,8 @@ package com.mason.crushcockroach.screens
 	 */
 	public class InGame extends GameWindow 
 	{
+		private var _isHardwareRendering:Boolean;
+		
 		private var _background:GameBackground;
 		private var _pauseButton:Button;
 		private var _startButton:Button;
@@ -115,6 +118,8 @@ package com.mason.crushcockroach.screens
 		// protected ////
 		override protected function drawScreen():void
 		{
+			_isHardwareRendering = Starling.context.driverInfo.toLocaleLowerCase().indexOf("software") == -1;
+			
 			_background = new GameBackground();
 			_background.touchable = false;
 			
@@ -222,9 +227,14 @@ package com.mason.crushcockroach.screens
 					for (var i:int = 0; i < countNeedToGenerate; ++i)
 					{
 						cockroach = new Cockroach();
-						//cockroach.pivotX = -cockroach.width * .5;
-						//cockroach.pivotY = -cockroach.height * .5;
 						cockroach.speed = GameConstants.COCKROACH_BASE_SPEED * Math.random();
+						//
+						if (_cockroachInScreen > 0 && _cockroachInScreen % 10 == 0)
+						{
+							cockroach.speed *= 4;
+							cockroach.damage *= 4;
+							cockroach.showDust();
+						}
 						
 						_background.addChild(cockroach);
 						
@@ -248,11 +258,12 @@ package com.mason.crushcockroach.screens
 				if (cockroach.state == GameConstants.COCKROACH_ALIVE)
 				{
 					cockroach.x += cockroach.speed * _elapsed;
-					cockroach.speed -= (cockroach.speed - GameConstants.COCKROACH_BASE_SPEED) * .01;
+//					cockroach.speed -= (cockroach.speed - GameConstants.COCKROACH_BASE_SPEED) * .01;
 					
 					if (cockroach.x - cockroach.width > stage.stageWidth)
 					{
-						_hud.lives--;
+						trace(cockroach.damage);
+						_hud.lives -= cockroach.damage;
 						
 						cockroachDie(cockroach);
 						

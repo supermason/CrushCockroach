@@ -8,6 +8,7 @@ package com.mason.crushcockroach.ui
 	
 	import starling.display.Image;
 	import starling.display.MovieClip;
+	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	
@@ -22,6 +23,7 @@ package com.mason.crushcockroach.ui
 		private var _hammerArt:MovieClip;
 		private var _pivotX:int;
 		private var _pivotY:int;
+		private var _realPoint:Quad;
 		
 		public function Mouse() 
 		{
@@ -47,7 +49,7 @@ package com.mason.crushcockroach.ui
 		// private ////
 		private function crreat():void 
 		{
-//			flash.ui.Mouse.hide();
+			flash.ui.Mouse.hide();
 			
 			touchable = false;
 			
@@ -59,10 +61,16 @@ package com.mason.crushcockroach.ui
 			
 			_hammerReadyImage = new Image(_hammerArt.getFrameTexture(0));
 			
+			_realPoint = new Quad(5, 5, 0xff0000);
+			
 			_pivotX = _hammerArt.getFrameTexture(4).width * .5;
-			_pivotY = _hammerArt.getFrameTexture(4).height - 10;
+			_pivotY = _hammerArt.getFrameTexture(4).height + 5;
+			
+			_realPoint.x = _pivotX;
+			_realPoint.y = _pivotY;
 			
 			addChild(_hammerReadyImage);
+			addChild(_realPoint);
 			addChild(_hammerArt);
 		}
 		

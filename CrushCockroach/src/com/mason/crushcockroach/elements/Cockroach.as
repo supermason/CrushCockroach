@@ -2,8 +2,12 @@ package com.mason.crushcockroach.elements
 {
 	import com.mason.crushcockroach.GameConstants;
 	import com.mason.crushcockroach.res.Assets;
+	import com.mason.crushcockroach.res.ParticleAssets;
 	import com.mason.crushcockroach.ui.GameSprite;
+	
 	import starling.display.MovieClip;
+	import starling.extensions.PDParticleSystem;
+	import starling.textures.Texture;
 	
 	/**
 	 * ...
@@ -15,20 +19,39 @@ package com.mason.crushcockroach.elements
 		private var _speed:Number;
 		private var _state:int;
 		
+		private var _showDust:Boolean;
+		private var _dust:PDParticleSystem;
+		private var _damage:int = GameConstants.DAMAGE;
+		
 		public function Cockroach() 
 		{
 			super();
-			
 		}
 		
 		// public ////
+		public function showDust():void
+		{
+			_showDust = true;
+			
+			if (_cockroachArt)
+			{
+				createDust();
+			}
+		}
+		
 		public function dead():void
 		{
 			if (parent) parent.removeChild(this);
 			
 			removeFromJuggler(_cockroachArt);
-			
 			_cockroachArt.dispose();
+			
+			if (_showDust) 
+			{
+				removeFromJuggler(_dust);
+				_dust.dispose();
+			}
+			
 		}
 		
 		// protected ////
@@ -48,9 +71,25 @@ package com.mason.crushcockroach.elements
 			if (y <= 80) y = 80;
 			
 			_state = GameConstants.COCKROACH_ALIVE;
+			
+			if (_showDust && !_dust)
+			{
+				createDust();
+			}
 		}
 		
 		// private ////
+		
+		private function createDust():void
+		{
+			_dust = new PDParticleSystem(XML(new ParticleAssets.DustXML()), Texture.fromBitmap(new ParticleAssets.DustTexture()));
+			_dust.emitterX = _cockroachArt.width * .5 * .5;
+			_dust.emitterY = 65;
+			_dust.alpha = .3;
+			_dust.start();
+			addToJuggler(_dust);
+			addChild(_dust);
+		}
 		
 		// getter && setter ////
 		
@@ -91,6 +130,17 @@ package com.mason.crushcockroach.elements
 		{
 			_state = value;
 		}
+
+		public function get damage():int
+		{
+			return _damage;
+		}
+
+		public function set damage(value:int):void
+		{
+			_damage = value;
+		}
+
 	}
 
 }

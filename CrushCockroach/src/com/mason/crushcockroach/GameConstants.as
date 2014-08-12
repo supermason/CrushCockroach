@@ -25,6 +25,7 @@ package com.mason.crushcockroach
 		public static const AVERAGE_GENERATION_COUNT:int = 10;
 		public static const GENERATE_FREQUENCY:int = 2;
 		public static const COCKROACH_BASE_SPEED:Number = 100;
+		public static const DAMAGE:int = 1;
 		
 		// cockroachs' state ---------------------------------------
 		
