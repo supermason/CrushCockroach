@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:31192453828dfe2afec648072a51447c:86099ca690f574cfbe97481f26145f82:2ac6582fc90a89688c4692188a4467a6$ -->
+<!-- $TexturePacker:SmartUpdate:58a066a1e9d566c35ca61950f09bb69b:bf5ec90d4de41fb23b0fd6096d84f1f9:2ac6582fc90a89688c4692188a4467a6$ -->
 <TextureAtlas imagePath="gameSpritesheet.png">
-    <SubTexture name="aboutButton" x="1024" y="0" width="170" height="216"/>
-    <SubTexture name="backButton" x="1024" y="216" width="170" height="216"/>
-    <SubTexture name="bgInGame" x="0" y="0" width="1024" height="768"/>
-    <SubTexture name="cockroachInWelcome_1" x="622" y="768" width="183" height="208"/>
-    <SubTexture name="cockroachInWelcome_2" x="805" y="768" width="183" height="208"/>
-    <SubTexture name="mainButton" x="1024" y="432" width="170" height="216"/>
-    <SubTexture name="naruto_run_01" x="491" y="848" width="74" height="46" frameX="-13" frameY="-15" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_02" x="457" y="900" width="76" height="48" frameX="-11" frameY="-13" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_03" x="411" y="848" width="80" height="52" frameX="-7" frameY="-14" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_04" x="351" y="848" width="60" height="64" frameX="-26" frameY="-2" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_05" x="351" y="912" width="50" height="60" frameX="-34" frameY="-6" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="naruto_run_06" x="401" y="912" width="56" height="58" frameX="-31" frameY="-8" frameWidth="192" frameHeight="192"/>
-    <SubTexture name="pauseButton" x="565" y="848" width="40" height="40"/>
-    <SubTexture name="playAgainButton" x="1024" y="648" width="170" height="216"/>
-    <SubTexture name="playButton" x="169" y="848" width="182" height="158"/>
-    <SubTexture name="sounds_off" x="565" y="888" width="40" height="40"/>
-    <SubTexture name="sounds_on_1" x="533" y="928" width="40" height="40"/>
-    <SubTexture name="sounds_on_2" x="573" y="928" width="40" height="40"/>
-    <SubTexture name="sounds_on_3" x="988" y="864" width="40" height="40"/>
-    <SubTexture name="startButton" x="0" y="864" width="169" height="128"/>
-    <SubTexture name="subtitle" x="351" y="976" width="362" height="30" frameX="-425" frameY="-443" frameWidth="1024" frameHeight="768"/>
-    <SubTexture name="title" x="0" y="768" width="622" height="80" frameX="-202" frameY="-253" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="A" x="622" y="0" width="76" height="78"/>
+    <SubTexture name="B" x="548" y="374" width="65" height="74"/>
+    <SubTexture name="C" x="169" y="318" width="67" height="76"/>
+    <SubTexture name="D" x="616" y="296" width="69" height="72"/>
+    <SubTexture name="E" x="876" y="169" width="58" height="71"/>
+    <SubTexture name="F" x="876" y="94" width="59" height="75"/>
+    <SubTexture name="G" x="548" y="296" width="68" height="78"/>
+    <SubTexture name="H" x="938" y="0" width="66" height="76"/>
+    <SubTexture name="I" x="329" y="380" width="34" height="76"/>
+    <SubTexture name="J" x="236" y="318" width="57" height="76"/>
+    <SubTexture name="aboutButton" x="366" y="80" width="170" height="216"/>
+    <SubTexture name="backButton" x="536" y="80" width="170" height="216"/>
+    <SubTexture name="cockroachInWelcome_1" x="0" y="110" width="183" height="208"/>
+    <SubTexture name="cockroachInWelcome_2" x="183" y="110" width="183" height="208"/>
+    <SubTexture name="hammer_1" x="876" y="378" width="40" height="60" frameX="-51" frameY="-27" frameWidth="108" frameHeight="100"/>
+    <SubTexture name="hammer_4" x="293" y="380" width="36" height="82" frameX="-54" frameY="-1" frameWidth="108" frameHeight="100"/>
+    <SubTexture name="hammer_5" x="876" y="240" width="60" height="60" frameX="-48" frameY="-5" frameWidth="108" frameHeight="100"/>
+    <SubTexture name="hammer_6" x="876" y="0" width="62" height="94" frameX="-9" frameY="0" frameWidth="108" frameHeight="100"/>
+    <SubTexture name="hammer_7" x="169" y="394" width="64" height="68" frameX="0" frameY="-31" frameWidth="108" frameHeight="100"/>
+    <SubTexture name="mainButton" x="706" y="0" width="170" height="216"/>
+    <SubTexture name="naruto_run_01" x="938" y="76" width="74" height="46" frameX="-13" frameY="-15" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_02" x="934" y="174" width="76" height="48" frameX="-11" frameY="-13" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_03" x="935" y="122" width="80" height="52" frameX="-7" frameY="-14" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_04" x="233" y="394" width="60" height="64" frameX="-26" frameY="-2" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_05" x="952" y="280" width="50" height="60" frameX="-34" frameY="-6" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="naruto_run_06" x="936" y="222" width="56" height="58" frameX="-31" frameY="-8" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="pauseButton" x="916" y="422" width="40" height="40"/>
+    <SubTexture name="playAgainButton" x="706" y="216" width="170" height="216"/>
+    <SubTexture name="playButton" x="366" y="296" width="182" height="158"/>
+    <SubTexture name="sounds_off" x="956" y="422" width="40" height="40"/>
+    <SubTexture name="sounds_on_1" x="616" y="368" width="40" height="40"/>
+    <SubTexture name="sounds_on_2" x="613" y="408" width="40" height="40"/>
+    <SubTexture name="sounds_on_3" x="656" y="368" width="40" height="40"/>
+    <SubTexture name="startButton" x="0" y="318" width="169" height="128"/>
+    <SubTexture name="subtitle" x="0" y="80" width="362" height="30" frameX="-425" frameY="-443" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="title" x="0" y="0" width="622" height="80" frameX="-202" frameY="-253" frameWidth="1024" frameHeight="768"/>
 </TextureAtlas>

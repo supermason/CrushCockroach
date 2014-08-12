@@ -96,6 +96,8 @@ package com.mason.crushcockroach.ui
 			addChild(_txtDuration);
 			
 			_lives = GameConstants.FULL_HP;
+			
+			touchable = false;
 		}
 		
 		// getter && setter ////

@@ -72,7 +72,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>1024</int>
             <key>height</key>
             <int>2048</int>
         </QSize>
@@ -180,7 +180,6 @@
         <key>fileList</key>
         <array>
             <filename>../pieces/aboutButton.png</filename>
-            <filename>../pieces/bgInGame.jpg</filename>
             <filename>../pieces/startButton.png</filename>
             <filename>../pieces/backButton.png</filename>
             <filename>../pieces/subtitle.png</filename>
@@ -201,6 +200,30 @@
             <filename>../pieces/naruto_run/naruto_run_06.png</filename>
             <filename>../pieces/mainButton.png</filename>
             <filename>../pieces/playAgainButton.png</filename>
+            <filename>../pieces/hammer/hammer_1.png</filename>
+            <filename>../pieces/hammer/hammer_4.png</filename>
+            <filename>../pieces/hammer/hammer_6.png</filename>
+            <filename>../pieces/hammer/hammer_7.png</filename>
+            <filename>../pieces/hammer/hammer_5.png</filename>
+            <filename>../pieces/chars/A.png</filename>
+            <filename>../pieces/chars/C.png</filename>
+            <filename>../pieces/chars/D.png</filename>
+            <filename>../pieces/chars/G.png</filename>
+            <filename>../pieces/hammer/hammer_2.png</filename>
+            <filename>../pieces/hammer/hammer_3.png</filename>
+            <filename>../pieces/hammer/hammer_9.png</filename>
+            <filename>../pieces/chars/B.png</filename>
+            <filename>../pieces/chars/E.png</filename>
+            <filename>../pieces/chars/F.png</filename>
+            <filename>../pieces/hammer/hammer_10.png</filename>
+            <filename>../pieces/hammer/hammer_11.png</filename>
+            <filename>../pieces/hammer/hammer_12.png</filename>
+            <filename>../pieces/hammer/hammer_13.png</filename>
+            <filename>../pieces/hammer/hammer_14.png</filename>
+            <filename>../pieces/hammer/hammer_15.png</filename>
+            <filename>../pieces/chars/H.png</filename>
+            <filename>../pieces/chars/I.png</filename>
+            <filename>../pieces/chars/J.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -7,11 +7,16 @@ package com.mason.crushcockroach
 	import com.mason.crushcockroach.screens.InGame;
 	import com.mason.crushcockroach.screens.Welcome;
 	import com.mason.crushcockroach.ui.GameWindow;
+	import com.mason.crushcockroach.ui.Mouse;
 	import com.mason.crushcockroach.ui.SoundButton;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
 	
 	import starling.animation.Tween;
 	import starling.display.DisplayObjectContainer;
 	import starling.events.Event;
+	import flash.geom.Point;
 	
 	/**
 	 * ...
@@ -31,6 +36,10 @@ package com.mason.crushcockroach
 		private var _screenGameOver:GameOver;
 		private var _gameOverTween:Tween;
 		
+		private var _mouse:Mouse;
+		private var _touch:Touch;
+		private var _pos:Point = new Point();
+		
 		public function Game() 
 		{
 			super();
@@ -44,7 +53,7 @@ package com.mason.crushcockroach
 			
 			_screenWelcome.show(this);
 			
-			addChild(_soundButton);
+			setComponentTop();
 		}
 		
 		// protected ////
@@ -58,6 +67,8 @@ package com.mason.crushcockroach
 			_soundButton.x = int(_soundButton.width * 0.5);
 			_soundButton.y = int(_soundButton.height * 0.5);
 			
+			_mouse = new Mouse();
+			
 			show();
 		}
 		
@@ -67,6 +78,8 @@ package com.mason.crushcockroach
 			
 			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
 			addEventListener(NavigationEvent.CHANGE_SCREEN, onScreenChange);
+			
+			stage.addEventListener(TouchEvent.TOUCH, touchHandler);
 		}
 		
 		// event handler ////
@@ -114,7 +127,44 @@ package com.mason.crushcockroach
 			}
 			
 			// make sure this soundButton is on top of all other displayObjects
+			setComponentTop();
+		}
+		
+		private function touchHandler(e:TouchEvent):void 
+		{
+			_touch = e.getTouch(stage);
+			
+			if (_touch)
+			{
+				_touch.getLocation(stage, _pos);
+				_mouse.followMouse(_pos);
+				
+				if (_touch.phase == TouchPhase.BEGAN)
+				{
+					_mouse.onClick();
+				}
+				
+				if (_touch.phase == TouchPhase.ENDED)
+				{
+					if (_screenInGame.active) 
+					{
+						_screenInGame.touchHandler(_touch, _pos);
+					}
+				}
+			}
+		}
+		
+		private function enterFrameHandler(event:Event):void
+		{
+			if (_screenInGame.active) _screenInGame.timeElapsed();
+			if (_screenWelcome.active)_screenWelcome.timeElapsed();
+		}
+		
+		// private ////
+		private function setComponentTop():void
+		{
 			addChild(_soundButton);
+			addChild(_mouse);
 		}
 		
 		private function createTween():void
@@ -132,7 +182,7 @@ package com.mason.crushcockroach
 			_gameOverTween.onComplete = function():void {
 				if (_screenInGame.active)_screenInGame.hide();
 				removeFromJuggler(_gameOverTween);
-				addChild(_soundButton);
+				setComponentTop();
 			};
 			addToJuggler(_gameOverTween);
 		}
@@ -151,7 +201,7 @@ package com.mason.crushcockroach
 			removeFromJuggler(_gameOverTween);
 			_gameOverTween.reset(_screenGameOver, 1);
 			
-			addChild(_soundButton);
+			setComponentTop();
 		}
 		
 		private function showInGameScreen():void
@@ -174,13 +224,6 @@ package com.mason.crushcockroach
 			
 			_screenWelcome.jumpToAbout();
 		}
-		
-		private function enterFrameHandler(event:Event):void
-		{
-			if (_screenInGame.active) _screenInGame.timeElapsed();
-			if (_screenWelcome.active)_screenWelcome.timeElapsed();
-		}
-		
 	}
 
 }

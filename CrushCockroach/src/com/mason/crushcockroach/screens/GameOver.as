@@ -135,15 +135,21 @@ package com.mason.crushcockroach.screens
 			
 			if (event.target == _btnBackToMain)
 			{
-				dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.BACK_TO_WELCOME } ));
+				//dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.BACK_TO_WELCOME } ));
+				
+				dispatchEventWith(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.BACK_TO_WELCOME } );
 			}
 			else if (event.target == _btnPlayAgain)
 			{
-				dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.PLAY_AGAIN } ));
+				//dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.PLAY_AGAIN } ));
+				
+				dispatchEventWith(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.PLAY_AGAIN } );
 			}
 			else if (event.target == _btnAbout)
 			{
-				dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.JUMP_TO_ABOUT }));
+				//dispatchEvent(new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.JUMP_TO_ABOUT } ));
+				
+				dispatchEventWith(NavigationEvent.CHANGE_SCREEN, true, { "operation": Operation.JUMP_TO_ABOUT } );
 			}
 		}
 		

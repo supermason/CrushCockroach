@@ -148,9 +148,11 @@ package com.mason.crushcockroach.screens
 			{
 				Sounds.play("sndCoffee");
 				
-				if (!_startGameEvent) _startGameEvent = new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, {"operation": Operation.PLAY});
+				//if (!_startGameEvent) _startGameEvent = new NavigationEvent(NavigationEvent.CHANGE_SCREEN, true, {"operation": Operation.PLAY});
 				
-				dispatchEvent(_startGameEvent);
+				//dispatchEvent(_startGameEvent);
+				
+				dispatchEventWith(NavigationEvent.CHANGE_SCREEN, true, {"operation": Operation.PLAY});
 			}
 			else if (event.target == _aboutBtn)
 			{

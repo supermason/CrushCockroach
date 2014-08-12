@@ -18,6 +18,9 @@ package com.mason.crushcockroach.res
 		[Embed(source="/assets/graphics/bgWelcome.jpg")]
 		public static const BgWelcome:Class;
 		
+		[Embed(source="/assets/graphics/bgInGame.jpg")]
+		public static const BgInGame:Class;
+		
 		[Embed(source="/assets/graphics/gameOverBg.png")]
 		public static const BgGameOver:Class;
 		

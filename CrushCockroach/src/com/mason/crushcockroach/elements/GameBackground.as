@@ -21,7 +21,7 @@ package com.mason.crushcockroach.elements
 		{
 			super.drawScreen();
 			
-			_bgImage = new Image(Assets.getAtlas().getTexture("bgInGame"));
+			_bgImage = new Image(Assets.getTexture("BgInGame"));
 			
 			addChild(_bgImage);
 		}
