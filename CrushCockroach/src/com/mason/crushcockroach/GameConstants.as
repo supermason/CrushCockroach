@@ -15,7 +15,7 @@ package com.mason.crushcockroach
 		
 		// Player's attributes - how is the player going? -------------
 		
-		public static const FULL_HP:int = 100;
+		public static const FULL_HP:int = 500;
 		
 		
 		// Cockroack properties ------------------------------------

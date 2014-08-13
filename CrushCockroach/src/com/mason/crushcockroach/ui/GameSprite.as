@@ -15,11 +15,12 @@ package com.mason.crushcockroach.ui {
 	{
 		protected var _animateObjList:Vector.<IAnimatable>;
 		
-		public function GameSprite() 
+		public function GameSprite(initImmediately:Boolean=false) 
 		{
 			super();
 			
-			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			if (initImmediately) init();
+			else 				 addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		}
 		
 		/**
@@ -52,6 +53,8 @@ package com.mason.crushcockroach.ui {
 		{
 			if (_animateObjList.indexOf(animateObj) == -1)
 				_animateObjList[_animateObjList.length] = animateObj;
+			
+			if (animateObj is MovieClip) MovieClip(animateObj).play();
 			
 			AnimationHelper.addToJuggler(animateObj);
 		}

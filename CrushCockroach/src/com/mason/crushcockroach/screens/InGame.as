@@ -9,18 +9,19 @@ package com.mason.crushcockroach.screens
 	import com.mason.crushcockroach.res.Sounds;
 	import com.mason.crushcockroach.ui.GameWindow;
 	import com.mason.crushcockroach.ui.HUD;
-	import starling.core.Starling;
 	
 	import flash.display.Sprite;
 	import flash.geom.Point;
 	import flash.utils.getTimer;
 	
+	import starling.animation.Tween;
+	import starling.core.Starling;
 	import starling.display.Button;
 	import starling.display.DisplayObjectContainer;
 	import starling.events.Event;
 	import starling.events.Touch;
-	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
+	import starling.text.TextField;
 	
 	/**
 	 * ...
@@ -48,8 +49,20 @@ package com.mason.crushcockroach.screens
 		private var _cockroachInScreen:int;
 		private var _generateKeyPoint:Number = 0;
 		
-		private var _offsetX:int = 5;
-		private var _offsetY:int = 5;
+		private var _offsetX:int = 10;
+		private var _offsetY:int = 10;
+		
+		private var _cameraShake:Number = 0;
+		
+		private var _acceleration:Number = 1;
+		/**每出现多少个就会来个急速的*/
+		private var SUPER_SPEED_GENERATE_THRESHOLD:int = 10;
+		/**每杀死多少个，加速度就会自增*/
+		private var ACCELERATION_UP_THRESHOLD:int = 25;
+		
+		private var _tween:Tween;
+		
+//		private var _cockroachPool:CockroachPool;
 		
 		public function InGame() 
 		{
@@ -69,12 +82,36 @@ package com.mason.crushcockroach.screens
 		{
 			if (touch.phase == TouchPhase.ENDED)
 			{
+				var countInOneKill:int = 0;
+				
 				for each (var cockroach:Cockroach in _cockroaches)
 				{
 					if (hit(cockroach, pos))
 					{
+						countInOneKill++;
 						cockroachKilled(cockroach);
 					}
+				}
+				
+				if (countInOneKill > 1) 
+				{
+					_cameraShake = countInOneKill * countInOneKill;
+					
+					var tf:TextField = new TextField(100, 50, "x " + countInOneKill, "Showcard Gothic", 40, 0xff0000);
+					tf.x = pos.x - tf.width / 2;
+					tf.y = pos.y - tf.height;
+					_background.addChild(tf);
+					
+					var tween:Tween = new Tween(tf, 2);
+					tween.fadeTo(0);
+					tween.moveTo(tf.x, tf.y - 100);
+					tween.onComplete = function():void {
+						_background.removeChild(tf);
+						tf = null;
+						removeFromJuggler(_tween);
+						tween = null;
+					};
+					addToJuggler(tween);
 				}
 			}
 		}
@@ -89,6 +126,25 @@ package com.mason.crushcockroach.screens
 			else
 			{
 				return false;
+			}
+		}
+		
+		private function shakeScreen():void
+		{
+			if (_cameraShake > 0)
+			{
+				_cameraShake -= 0.1;
+				// Shake left right randomly.
+				this.x = int(Math.random() * _cameraShake - _cameraShake * 0.5); 
+				// Shake up down randomly.
+				this.y = int(Math.random() * _cameraShake - _cameraShake * 0.5); 
+			}
+			else if (x != 0) 
+			{
+				// If the shake value is 0, reset the stage back to normal.
+				// Reset to initial position.
+				this.x = 0;
+				this.y = 0;
 			}
 		}
 		
@@ -140,6 +196,7 @@ package com.mason.crushcockroach.screens
 			addChild(_hud);
 			
 			_cockroaches = new <Cockroach>[];
+//			_cockroachPool = new CockroachPool();
 			
 			screenState = GameConstants.GAME_STATE_IDLE;
 		}
@@ -197,6 +254,7 @@ package com.mason.crushcockroach.screens
 						addCockroach();
 						moveCockroach();
 						removeDeadCockroach();
+						shakeScreen();
 						break;
 				}
 			}
@@ -215,21 +273,21 @@ package com.mason.crushcockroach.screens
 				
 				if (_cockroachInScreen < GameConstants.MAX_COCKROACH_IN_SCREEN)
 				{
-					var countNeedToGenerate:int = GameConstants.AVERAGE_GENERATION_COUNT;
+					var countNeedToGenerate:int = GameConstants.AVERAGE_GENERATION_COUNT * (1 + _elapsed);
 					
-					if (_cockroachInScreen < GameConstants.MIN_COCKROACH_IN_SCREEN)
-					{
-						countNeedToGenerate = GameConstants.MIN_COCKROACH_IN_SCREEN - _cockroachInScreen;
-					}
+//					if (_cockroachInScreen < GameConstants.MIN_COCKROACH_IN_SCREEN)
+//					{
+//						countNeedToGenerate = GameConstants.MIN_COCKROACH_IN_SCREEN - _cockroachInScreen;
+//					}
 					
 					var cockroach:Cockroach;
 					
 					for (var i:int = 0; i < countNeedToGenerate; ++i)
 					{
 						cockroach = new Cockroach();
-						cockroach.speed = GameConstants.COCKROACH_BASE_SPEED * Math.random();
-						//
-						if (_cockroachInScreen > 0 && _cockroachInScreen % 10 == 0)
+						cockroach.speed = GameConstants.COCKROACH_BASE_SPEED * Math.random() * (1 + _acceleration);
+						// 每新出现10个，就会出现一个超级速度的
+						if (_cockroachInScreen > 0 && _cockroachInScreen % SUPER_SPEED_GENERATE_THRESHOLD == 0)
 						{
 							cockroach.speed *= 4;
 							cockroach.damage *= 4;
@@ -253,8 +311,13 @@ package com.mason.crushcockroach.screens
 		
 		private function moveCockroach():void
 		{
-			for each (var cockroach:Cockroach in _cockroaches)
+			var cockroach:Cockroach;
+			var len:int = _cockroaches.length;
+			
+			for (var i:int = 0; i < len; ++i)
 			{
+				cockroach = _cockroaches[i];
+				
 				if (cockroach.state == GameConstants.COCKROACH_ALIVE)
 				{
 					cockroach.x += cockroach.speed * _elapsed;
@@ -262,10 +325,9 @@ package com.mason.crushcockroach.screens
 					
 					if (cockroach.x - cockroach.width > stage.stageWidth)
 					{
-						trace(cockroach.damage);
 						_hud.lives -= cockroach.damage;
-						
 						cockroachDie(cockroach);
+						_cockroaches[i] = null;
 						
 						if (_hud.lives <= 0)
 						{
@@ -280,14 +342,15 @@ package com.mason.crushcockroach.screens
 		{
 			_hud.killCount++;
 			
+			// 每杀死25个，速度就会提升
+			if (_hud.killCount % ACCELERATION_UP_THRESHOLD == 0) _acceleration += .5;
+			
 			cockroachDie(cockroach);
 		}
 		
 		private function cockroachDie(cockroach:Cockroach):void 
 		{
-			cockroach.state = GameConstants.COCKROACH_DEAD;
 			cockroach.dead();
-			cockroach = null;
 						
 			_cockroachInScreen--;
 		}

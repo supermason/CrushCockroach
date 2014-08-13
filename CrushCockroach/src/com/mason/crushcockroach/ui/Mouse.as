@@ -61,7 +61,8 @@ package com.mason.crushcockroach.ui
 			
 			_hammerReadyImage = new Image(_hammerArt.getFrameTexture(0));
 			
-			_realPoint = new Quad(5, 5, 0xff0000);
+			_realPoint = new Quad(10, 10, 0xff0000);
+			_realPoint.alpha = .5;
 			
 			_pivotX = _hammerArt.getFrameTexture(4).width * .5;
 			_pivotY = _hammerArt.getFrameTexture(4).height + 5;

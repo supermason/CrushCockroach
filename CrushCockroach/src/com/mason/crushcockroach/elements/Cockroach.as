@@ -1,6 +1,7 @@
 package com.mason.crushcockroach.elements 
 {
 	import com.mason.crushcockroach.GameConstants;
+	import com.mason.crushcockroach.objPool.IPoolable;
 	import com.mason.crushcockroach.res.Assets;
 	import com.mason.crushcockroach.res.ParticleAssets;
 	import com.mason.crushcockroach.ui.GameSprite;
@@ -13,15 +14,19 @@ package com.mason.crushcockroach.elements
 	 * ...
 	 * @author Mason
 	 */
-	public class Cockroach extends GameSprite 
+	public class Cockroach extends GameSprite implements IPoolable
 	{
+		private var _uid:String;
 		private var _cockroachArt:MovieClip
 		private var _speed:Number;
 		private var _state:int;
+		private var _created:Boolean;
 		
 		private var _showDust:Boolean;
 		private var _dust:PDParticleSystem;
 		private var _damage:int = GameConstants.DAMAGE;
+		
+		private static var _index:int;
 		
 		public function Cockroach() 
 		{
@@ -32,24 +37,36 @@ package com.mason.crushcockroach.elements
 		public function showDust():void
 		{
 			_showDust = true;
-			
-			if (_cockroachArt)
+		}
+		
+		public function activate():void
+		{
+			if (_created)
 			{
-				createDust();
+				_state = GameConstants.COCKROACH_ALIVE;
+				position();
+				addToJuggler(_cockroachArt);
+				
+//				trace("obj::", _uid, "in activate\n================================");
 			}
 		}
 		
 		public function dead():void
 		{
 			if (parent) parent.removeChild(this);
-			
+			   
 			removeFromJuggler(_cockroachArt);
-			_cockroachArt.dispose();
 			
-			if (_showDust) 
+			_cockroachArt.dispose();
+			_cockroachArt = null;
+			
+			_showDust = false;
+			
+			if (_dust) 
 			{
 				removeFromJuggler(_dust);
 				_dust.dispose();
+				_dust = null;
 			}
 			
 		}
@@ -57,25 +74,26 @@ package com.mason.crushcockroach.elements
 		// protected ////
 		override protected function drawScreen():void
 		{
-			_cockroachArt = new MovieClip(Assets.getAtlas().getTextures("naruto_run_"), 6);
-//			_cockroachArt.x = Math.ceil(-_cockroachArt.width * .5);
-//			_cockroachArt.y = Math.ceil(-_cockroachArt.height * .5);
-			
-			addToJuggler(_cockroachArt);
-			
-			addChild(_cockroachArt);
-			
-			x = -_cockroachArt.width;
-			y = (stage.stageHeight - _cockroachArt.texture.height - 50) * Math.random();
-			
-			if (y <= 80) y = 80;
-			
-			_state = GameConstants.COCKROACH_ALIVE;
-			
-			if (_showDust && !_dust)
+			if (!_created)
 			{
-				createDust();
+				_created = true;
+				_uid = "COCKROACH-" + getIndex();
+				_cockroachArt = new MovieClip(Assets.getAtlas().getTextures("naruto_run_"), 6);
+				addChild(_cockroachArt);   
 			}
+			
+//			trace("obj::", _uid, "in drawScreen");
+			
+			if (_showDust) createDust();
+			
+			activate();
+			
+		}
+		
+		private function getIndex():String
+		{
+			_index++;
+			return _index.toString();
 		}
 		
 		// private ////
@@ -89,6 +107,13 @@ package com.mason.crushcockroach.elements
 			_dust.start();
 			addToJuggler(_dust);
 			addChild(_dust);
+		}
+		
+		private function position():void
+		{
+			x = -_cockroachArt.width;
+			y = (stage.stageHeight - _cockroachArt.texture.height - 50) * Math.random();
+			if (y <= 80) y = 80;
 		}
 		
 		// getter && setter ////
